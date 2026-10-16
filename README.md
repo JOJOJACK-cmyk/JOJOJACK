@@ -44,6 +44,9 @@
 
 **DevOps · Tools**
 
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
@@ -55,26 +58,33 @@
 
 ## 📁 Projects
 
-### 🌊 여행온도 — 관광지별 여행 경험을 요약하는 후기 정보·커뮤니티 서비스
+### 🌊 여행온도 — 관광지 후기 정보·커뮤니티 서비스
 
 <img src="assets/travel-temperature/logo.png" width="280" alt="여행온도 픽셀 로고" />
 
-> **개인 프로젝트 (1명)** · 2026.09 – 진행 중 · [저장소 보기](https://github.com/JOJOJACK-cmyk/tourist-attraction)
+> **개인 프로젝트 (1명)** · 2026.09 – 진행 중 · **AWS EC2 배포**
 >
-> 담당: 서비스 기획, 데이터 모델 설계, 백엔드 API, 화면 구성, 기능 검증
+> 담당: 서비스 기획, 데이터 모델 설계, 백엔드 API, 화면 구성, 기능 검증, 서버 배포
+>
+> [서비스 접속](https://travelondo2026.duckdns.org) · [저장소 보기](https://github.com/JOJOJACK-cmyk/tourist-attraction) · [테스트 실행 기록](https://github.com/JOJOJACK-cmyk/tourist-attraction/actions)
 
-여행 전에 관광지의 가격 체감·서비스·혼잡도를 살펴보고, 이용자끼리 경험과 질문을 나눌 수 있는 웹 서비스입니다.
+여행 전에 관광지의 가격 체감·서비스·혼잡도를 살펴보고, 이용자끼리 후기와 질문을 나누는 웹 서비스입니다.
+기획부터 인증·게시판·후기 관리 기능 구현, 기존 MySQL 데이터 이전과 HTTPS 배포까지 직접 진행했습니다.
 
-<img src="assets/travel-temperature/main.png" width="820" alt="여행온도 메인 화면 - 목적지와 후기 작성 연도를 고르고 검토 후기 자료 또는 AI 웹 검색으로 여행 정보를 찾는 화면" />
+> 서비스는 시연·개발 일정에 맞춰 서버를 운영하므로 접속이 제한될 수 있습니다. 화면과 구현 내용은 아래 자료 및 저장소에서 확인할 수 있습니다.
 
-- **관광지 · 연도별 종합 후기**: 9개 관광지를 지역별로 탐색하고, 선택한 연도의 후기에서 반복되는 칭찬·불만·주요 이슈와 식비·숙박·서비스·혼잡도를 나눠 요약
-- **로컬 AI 후기 분석 (관리자 전용)**: Ollama에 시스템 프롬프트와 JSON 스키마를 넘겨 후기를 구조화하고, 응답의 형식·출처 ID·날짜를 서버에서 검증. 연결 실패·시간 초과·잘못된 JSON을 구분해 처리하고 동시 분석은 1건으로 제한
-- **AI 웹 검색**: Gemini API + Google Search grounding으로 후기를 검색하고, 출처가 연결되지 않은 응답은 오류로 처리. API 키는 서버 환경변수로만 관리
-- **커뮤니티**: 질문·자유 게시판, 관광지 태그, 익명 글·댓글·사진 첨부. 수정·삭제 권한을 서버에서 검증 (Spring Security 세션 로그인, CSRF, BCrypt), 카카오·구글 OAuth2 로그인
-- **그룹 채팅 · 결제**: WebSocket 그룹 채팅방(초대 링크, 참여 권한 확인), 카카오페이 후원 결제(서버에서 금액·주문 검증)
-- **테스트**: JUnit·MockMvc 테스트 51개로 인증·권한, 입력값, 관광지·연도별 조회, 외부 API 오류 응답을 점검하고 GitHub Actions로 push·PR마다 실행
+<img src="assets/travel-temperature/main.png" width="820" alt="여행온도 메인 화면 - 목적지와 후기 작성 연도를 선택해 여행 정보를 탐색하는 화면" />
 
-`Java 17` `Spring Boot 3.5` `Spring Security` `Spring Data JPA` `Thymeleaf` `WebSocket` `MySQL` `JavaScript` `Ollama` `Gemini API` `GitHub Actions`
+- **관광지 · 연도별 종합 후기**: 9개 관광지를 지역별로 탐색하고, 선택한 연도의 칭찬·불만·주요 이슈와 식비·숙박비·서비스·혼잡도를 구분해 요약. 원문 링크로 근거 확인
+- **직접 방문 후기**: 방문일·지출액·대기 시간·항목별 체감·사진 등록, 내 후기 수정·삭제, 관리자 승인·반려. 승인된 후기만 공개·집계하고 수정 시 재검토하며 버전 검사로 변경 충돌 처리
+- **회원 · 인증**: 일반 회원가입·로그인, 네이버 OAuth2·구글 OIDC 로그인, 닉네임 설정. BCrypt·CSRF·세션 인증을 적용하고 본인 글·후기 및 관리자 권한을 서버에서 검증
+- **커뮤니티 · 저장**: 자유·질문 게시판, 관광지 태그·검색·페이지 구분·댓글·사진 첨부. 게시글에 회원당 1회의 ‘도움됐어요’와 취소 기능, 본인만 조회할 수 있는 저장 목록 제공. 게시판·댓글에는 닉네임을 표시하고 직접 방문 후기는 익명으로 공개
+- **그룹 채팅**: WebSocket 기반 채팅방 생성·초대 링크·실시간 메시지, 방 참여 권한 확인
+- **AI 분석·검색 (선택 연동)**: 관리자용 Ollama 후기 구조화 및 응답 검증, Gemini API + Google Search grounding 기반 검색 구현. 외부 API 키·모델 연결 설정이 필요한 기능으로, 연결 실패·시간 초과·근거 없는 응답을 구분해 처리
+- **AWS 배포**: Ubuntu EC2에 Spring Boot·MySQL·Nginx 구성, 기존 DB 이전, systemd 앱 자동 실행. Let's Encrypt HTTPS·세션 쿠키 보안 설정, Nginx WebSocket 프록시, DuckDNS IP 자동 갱신 적용
+- **검증**: JUnit·MockMvc **81개 테스트 통과**와 JavaScript 화면 동작 테스트 확인. 인증·권한·후기 검토·저장 목록 격리·동시 반응 중복 방지 등을 GitHub Actions에서 검증
+
+`Java 17` `Spring Boot 3.5` `Spring Security` `Spring Data JPA` `Thymeleaf` `WebSocket` `MySQL` `JavaScript` `OAuth2 / OIDC` `AWS EC2` `Ubuntu` `Nginx` `GitHub Actions`
 
 <details>
 <summary><b>📸 화면 더 보기</b></summary>
@@ -84,15 +94,34 @@
 | :-: | :-: |
 | <img src="assets/travel-temperature/destinations.png" width="380" alt="9개 관광지를 지역별로 탐색하는 픽셀 일러스트 카드 화면" /> | <img src="assets/travel-temperature/cost-analysis.png" width="380" alt="식비, 숙박비, 서비스, 혼잡·대기 항목별 후기 분석과 칭찬·불만 집계 화면" /> |
 | **관광지별 종합 후기** | **커뮤니티** |
-| <img src="assets/travel-temperature/review-summary.png" width="380" alt="선택한 관광지와 연도의 전체 후기, 칭찬 언급, 불만 언급 수를 보여 주는 화면" /> | <img src="assets/travel-temperature/community.png" width="380" alt="질문 게시판과 자유 게시판을 나눈 커뮤니티 화면" /> |
+| <img src="assets/travel-temperature/review-summary.png" width="380" alt="선택한 관광지와 연도의 후기, 칭찬 언급, 불만 언급 수를 보여 주는 화면" /> | <img src="assets/travel-temperature/community.png" width="380" alt="질문 게시판과 자유 게시판을 나눈 커뮤니티 화면" /> |
 
 </details>
 
 <details>
-<summary><b>🏗 서비스 구조 · AI 분석 흐름</b></summary>
+<summary><b>🏗 AWS 배포 구조 · AI 분석 흐름</b></summary>
 <br />
 
-<img src="assets/travel-temperature/architecture.png" width="760" alt="사용자 화면에서 Spring Boot 서버를 거쳐 MySQL로 연결되고, 서버에서 Ollama와 Gemini 분석 모듈을 호출하는 구조" />
+**배포 구성**
+
+```mermaid
+flowchart TB
+    browser["브라우저"] -->|HTTPS| nginx
+    subgraph ec2["AWS EC2 · Ubuntu"]
+        nginx["Nginx · Let's Encrypt"] --> app["Spring Boot · systemd"]
+        app --> db[("MySQL")]
+        app --> photos["업로드 사진 저장"]
+    end
+```
+
+Nginx에서 HTTPS를 처리하고 서버 내부의 앱으로 요청을 전달합니다. MySQL과 앱의 8080 포트는 외부에 공개하지 않았습니다.
+DuckDNS는 5분마다 공개 IP를 갱신하고, 인증서 자동 갱신을 예약했습니다. 네이버·구글 로그인 콜백은 HTTPS 도메인으로 연결했습니다.
+
+**앱 구성 및 AI 모듈 연동 구조**
+
+아래는 앱의 모듈 구성과 선택적으로 연결하는 AI 분석 흐름입니다. Ollama 분석은 모델을 실행한 별도 환경에 연결해 사용합니다.
+
+<img src="assets/travel-temperature/architecture.png" width="760" alt="사용자 화면, Spring Boot, MySQL과 선택적으로 연결하는 Ollama·Gemini 모듈 구조" />
 
 <img src="assets/travel-temperature/ai-review-flow.png" width="760" alt="관리자 입력, Ollama 분석, 응답 검증, 결과 반환 순서와 연결 실패 등 예외 처리 흐름" />
 
@@ -104,9 +133,12 @@
 
 | 과제 | 해결 |
 | --- | --- |
-| AI 결과의 형식·근거 불일치 | 구조화된 응답과 JSON 스키마 검증을 적용하고, 출처·날짜가 입력과 맞지 않는 결과는 거부 |
-| 외부 AI 서비스 미연결·지연 | 설정 여부와 연결 상태를 분리하고, 예외 유형별 응답과 동시 요청 제한을 구성 |
-| 다른 관광지·연도의 자료 혼입 | 관광지 식별자와 작성 연도로 조회·표시 범위를 제한하고, 자료가 없으면 빈 결과 반환 |
+| 도움 반응 동시 요청의 중복 집계 | 회원·게시글 유일 제약과 게시글 행 쓰기 잠금, 상태 지정형 PUT·DELETE로 반복 요청의 결과 유지 |
+| 방문 후기 수정·검토 중 변경 충돌 | 버전을 검사해 오래된 요청을 거부하고, 수정한 후기는 다시 검토 대기 상태로 전환 |
+| 다른 회원의 비공개 정보 노출 | 저장 목록은 로그인한 본인으로 조회 범위를 제한하고, 미승인 후기는 작성자·관리자만 열람 |
+| 다른 관광지·연도의 자료 혼입 | 관광지 식별자와 작성 연도로 조회·집계 범위를 제한하고, 자료가 없으면 빈 결과 반환 |
+| AI 결과의 형식·근거 불일치 | 구조화된 응답과 JSON 스키마 검증, 출처·날짜 검증으로 근거가 맞지 않는 결과 거부 |
+| 서버 배포 후 인증·채팅 연결 | HTTPS 도메인에 소셜 로그인 콜백을 등록하고 프록시 전달 헤더·WebSocket 연결 설정 적용 |
 
 </details>
 
