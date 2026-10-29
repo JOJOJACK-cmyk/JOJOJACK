@@ -146,7 +146,7 @@ DuckDNS는 5분마다 공개 IP를 갱신하고, 인증서 자동 갱신을 예�
 
 **프로젝트 링크**
 
-- **PPT**: [개인 프로젝트 발표자료](https://github.com/JOJOJACK-cmyk/JOJOJACK)
+- **PPT**: [개인 프로젝트 발표자료](https://docs.google.com/presentation/d/1jQhYCtxxMoQSMmzNW6W8jJQHY5S5MG6g/edit?rtpof=true&sd=true)
 - **AWS**: [여행온도 서비스 접속](https://travelondo2026.duckdns.org/)
 
 ### 🎧 StreamWave — 음악 스트리밍 + 라이브 방송 플랫폼
