@@ -144,6 +144,11 @@ DuckDNS는 5분마다 공개 IP를 갱신하고, 인증서 자동 갱신을 예�
 
 </details>
 
+**프로젝트 링크**
+
+- **PPT**: [개인 프로젝트 발표자료](https://github.com/JOJOJACK-cmyk/JOJOJACK)
+- **AWS**: [여행온도 서비스 접속](https://travelondo2026.duckdns.org/)
+
 ### 🎧 StreamWave — 음악 스트리밍 + 라이브 방송 플랫폼
 
 > **팀 프로젝트 (3명)** · 2026.08.24 – 2026.09.09 (본인 참여 기간) · [저장소 보기](https://github.com/JOJOJACK-cmyk/-MUSIC-main2)
@@ -207,6 +212,10 @@ YouTube 음원 스트리밍과 OBS 라이브 방송을 합친 음악 플랫폼�
 - 결과: 같은 코드로 로컬과 서버 모두 동작
 
 </details>
+
+**프로젝트 링크**
+
+- **AWS**: [StreamWave 서비스 접속](http://streamwave-j.duckdns.org/)
 
 ## 📫 Contact
 
