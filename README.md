@@ -215,6 +215,7 @@ YouTube 음원 스트리밍과 OBS 라이브 방송을 합친 음악 플랫폼�
 
 **프로젝트 링크**
 
+- **PPT**: [팀 프로젝트 결과보고서](https://docs.google.com/presentation/d/11QsyBXQtYUldLmX1dsTyKh6z6-H-zVay/edit?slide=id.p1#slide=id.p1)
 - **AWS**: [StreamWave 서비스 접속](http://streamwave-j.duckdns.org/)
 
 ## 📫 Contact
